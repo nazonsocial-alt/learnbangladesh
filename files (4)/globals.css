@@ -1,0 +1,74 @@
+/* Learn Bangladesh — design tokens (Phase 3)
+   লোগো থেকে নেওয়া রঙ। লাল শুধু অ্যাকসেন্ট; লাল লেখার জন্য --danger-text ব্যবহার করুন। */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #fbfaf6;
+  --surface: #ffffff;
+  --surface-2: #f3f1ea;
+  --border: #e3e0d6;
+  --text: #1b2b27;
+  --text-muted: #55625e;
+  --primary: #006a44;
+  --primary-hover: #00553a;
+  --on-primary: #ffffff;
+  --primary-soft: #e3f1ea;
+  --accent: #f42a41;           /* শুধু আইকন/আকৃতি: স্ট্রিক, সূর্য, স্ট্যাম্পের বিন্দু */
+  --danger-text: #c71a30;      /* লেখার জন্য নিরাপদ লাল */
+  --focus: #0b57d0;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --shadow-sm: 0 1px 2px rgb(27 43 39 / 0.06);
+  --shadow-md: 0 8px 24px -8px rgb(27 43 39 / 0.14);
+  --font-bn: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+  --font-display-bn: "Noto Serif Bengali", "Hind Siliguri", serif;
+  --font-latin: "Inter", system-ui, sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0d1512;
+  --surface: #141f1b;
+  --surface-2: #1b2923;
+  --border: #2a3a33;
+  --text: #eef3f0;
+  --text-muted: #a6b5ae;
+  --primary: #4fd39a;
+  --primary-hover: #7be3b6;
+  --on-primary: #06231a;
+  --primary-soft: #16352a;
+  --accent: #ff5468;
+  --danger-text: #ff8593;
+  --focus: #8ab4ff;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 8px 24px -8px rgb(0 0 0 / 0.55);
+}
+
+/* হাই কনট্রাস্ট মোড (ব্যবহারকারী সেটিং থেকে চালু) */
+:root[data-contrast="high"] { --border: currentColor; --text-muted: var(--text); }
+
+/* ফন্ট আকার সেটিং */
+:root[data-font="lg"] { font-size: 112.5%; }
+:root[data-font="xl"] { font-size: 125%; }
+
+html { font-family: var(--font-bn); }
+html[lang="en"] { font-family: var(--font-latin); }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1.0625rem;   /* বাংলার জন্য ইংরেজির চেয়ে একটু বড় */
+  line-height: 1.75;      /* যুক্তাক্ষর ও মাত্রার জন্য বাড়তি লাইন-হাইট */
+}
+h1, h2, h3 { font-family: var(--font-display-bn); line-height: 1.35; letter-spacing: 0; }
+html[lang="en"] h1, html[lang="en"] h2, html[lang="en"] h3 { font-family: var(--font-latin); line-height: 1.2; }
+
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+:root[data-motion="off"] *, :root[data-motion="off"] *::before, :root[data-motion="off"] *::after {
+  animation: none !important; transition: none !important;
+}
